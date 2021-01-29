@@ -29,9 +29,14 @@ def round(turn):
     
 for tour in range(9):
     idx, idy, symbols, symbol = round(tour)
+    diago = [mainlist[di][di] for di in range(3)]
+    diagoo = [mainlist[dia][abs(2 - dia)] for dia in range(3)]
     checkerv = [mainlist[i][idx] == symbol for i in range(3)]
     checkerh = [mainlist[idy][j] == symbol for j in range(3)]
-    if checkerv == [True for rowidv in range(3)] or checkerh == [True for rowidh in range(3)]:   
+    checkerd = [diago[d1] == symbol for d1 in range(3)]
+    checkerdd = [diagoo[d2] == symbol for d2 in range(3)]
+
+    if checkerv == [True for rowidv in range(3)] or checkerh == [True for rowidh in range(3)] or checkerd == [True for rowidd in range(3)] or checkerdd == [True for rowiddd in range(3)]:   
         print("Game over, " + symbol + " wins!")
         break
     elif tour == 8:
